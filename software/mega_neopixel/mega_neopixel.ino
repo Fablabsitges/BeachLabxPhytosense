@@ -1,23 +1,6 @@
 #include <Adafruit_NeoPixel.h>
 
-#define L1 48
-#define R1 49
-#define L2 50
-#define R2 51
-#define L3 52
-#define R3 53
-
-#define L4 34
-#define R4 35
-#define L5 36
-#define R5 37
-
-#define L6 22
-#define R6 23
-#define L7 24
-#define R7 25
-#define L8 26
-#define R8 27
+#define pin 48
 
 // Parameter 1 = number of pixels in strip
 // Parameter 2 = Arduino pin number (most are valid)
@@ -26,24 +9,8 @@
 //   NEO_KHZ400  400 KHz (classic 'v1' (not v2) FLORA pixels, WS2811 drivers)
 //   NEO_GRB     Pixels are wired for GRB bitstream (most NeoPixel products)
 //   NEO_RGB     Pixels are wired for RGB bitstream (v1 FLORA pixels, not v2)
-Adafruit_NeoPixel strip_L1 = Adafruit_NeoPixel(30, L1, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel strip_R1 = Adafruit_NeoPixel(30, R1, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel strip_L2 = Adafruit_NeoPixel(30, L2, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel strip_R2 = Adafruit_NeoPixel(30, R2, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel strip_L3 = Adafruit_NeoPixel(30, L3, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel strip_R3 = Adafruit_NeoPixel(30, R3, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(480, pin, NEO_GRB + NEO_KHZ800);
 
-Adafruit_NeoPixel strip_L4 = Adafruit_NeoPixel(30, L4, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel strip_R4 = Adafruit_NeoPixel(30, R4, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel strip_L5 = Adafruit_NeoPixel(30, L5, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel strip_R5 = Adafruit_NeoPixel(30, R5, NEO_GRB + NEO_KHZ800);
-
-Adafruit_NeoPixel strip_L6 = Adafruit_NeoPixel(30, L6, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel strip_R6 = Adafruit_NeoPixel(30, R6, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel strip_L7 = Adafruit_NeoPixel(30, L7, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel strip_R7 = Adafruit_NeoPixel(30, R7, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel strip_L8 = Adafruit_NeoPixel(30, L8, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel strip_R8 = Adafruit_NeoPixel(30, R8, NEO_GRB + NEO_KHZ800);
 
 // IMPORTANT: To reduce NeoPixel burnout risk, add 1000 uF capacitor across
 // pixel power leads, add 300 - 500 Ohm resistor on first pixel's data input
@@ -51,19 +18,19 @@ Adafruit_NeoPixel strip_R8 = Adafruit_NeoPixel(30, R8, NEO_GRB + NEO_KHZ800);
 // on a live circuit...if you must, connect GND first.
 
 void setup() {
-  strip_L1.begin();
-  strip_L1.show(); // Initialize all pixels to 'off'
+  strip.begin();
+  strip.show(); // Initialize all pixels to 'off'
 }
 
 void loop() {
   // Some example procedures showing how to display to the pixels:
-  colorWipe(strip_L1.Color(255, 0, 0), 50); // Red
-  colorWipe(strip_L1.Color(0, 255, 0), 50); // Green
-  colorWipe(strip_L1.Color(0, 0, 255), 50); // Blue
+  colorWipe(strip.Color(255, 0, 0), 50); // Red
+  colorWipe(strip.Color(0, 255, 0), 50); // Green
+  colorWipe(strip.Color(0, 0, 255), 50); // Blue
   // Send a theater pixel chase in...
-  theaterChase(strip_L1.Color(127, 127, 127), 50); // White
-  theaterChase(strip_L1.Color(127,   0,   0), 50); // Red
-  theaterChase(strip_L1.Color(  0,   0, 127), 50); // Blue
+  theaterChase(strip.Color(127, 127, 127), 50); // White
+  theaterChase(strip.Color(127,   0,   0), 50); // Red
+  theaterChase(strip.Color(  0,   0, 127), 50); // Blue
 
   rainbow(20);
   rainbowCycle(20);
